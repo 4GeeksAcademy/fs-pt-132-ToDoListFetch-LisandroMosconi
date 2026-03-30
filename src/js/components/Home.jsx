@@ -1,26 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Form from "./Form";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
-	return (
-		<div className="text-center">
-            
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+	useEffect(() => {
+
+	}, [])
+
+	return (
+		<div className="container mt-5">
+			<div className="row justify-content-center">
+				<div className="col-12 col-md-6">
+					<Form />
+				</div>
+			</div>
 		</div>
 	);
 };
