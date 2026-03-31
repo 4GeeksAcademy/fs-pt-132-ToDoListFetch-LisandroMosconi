@@ -1,10 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Form = () => {
     const [task, setTask] = useState([]);
     const [text, setText] = useState("");
     const sound = new Audio("/Lizard.mp3");
+    const [user, setUser] = useState('');
+    const [data, setData] = useState({})
+    const url = 'https://playground.4geeks.com/todo'
 
+    useEffect(()=>{
+        getUser()
+    }, [])
+
+    const getUser = async () => {
+        try {
+            const resp = await fetch(url + '/users/' + user)
+
+            if (!resp.ok) {
+                throw new Error('Error detected')
+            }
+            const data = await resp.json()
+            console.log(data);
+            return setData(data);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -44,5 +66,4 @@ const Form = () => {
 
     </>
 }
-
 export default Form
